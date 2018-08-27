@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "gs-spring-boot",
+                "projectName": "gs-spring-boot",
+                "workingDirectory": "/Users/nico/jex/project1",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "gs-spring-boot",
+                "projectName": "gs-spring-boot",
+                "workingDirectory": "/Users/nico/jex/project1",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
