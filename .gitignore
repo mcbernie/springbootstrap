@@ -1,3 +1,6 @@
+# VSCode
+.vscode
+
 # Eclipse
 .classpath
 .project
@@ -17,4 +20,3 @@ target/
 build/
 
 .factorypath
-.classpath
