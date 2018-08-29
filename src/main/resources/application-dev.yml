@@ -1,0 +1,46 @@
+server:
+    error:
+        include-stacktrace: always
+        whitelabel:
+            enabled: false
+spring:
+    profiles:
+        active: dev
+
+    thymeleaf:
+        cache: false
+
+    devtools:
+        restart:
+            enabled: true
+            exclude: static/**,templates/**
+
+    #jade4j:
+    #    caching: false
+
+    jpa:
+        show-sql: true
+
+    datasource:
+        #type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/example?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        #driverClassName: org.sqlite.JDBC
+        #url: jdbc:sqlite:./test.db
+        username: root
+        password: 
+
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+    redis:
+      host: localhost
+      port: 6379
+      default_expire_time: 86400
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.raysmond.blog: DEBUG

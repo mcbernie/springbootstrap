@@ -1,0 +1,32 @@
+version: '3'
+services:
+    mysql:
+      image: mysql:5
+      environment:
+        - MYSQL_USER=root
+        - MYSQL_DATABASE=prod_db
+        - MYSQL_ROOT_PASSWORD=123456
+        - MYSQL_ROOT_HOST=%
+      restart: always
+
+    tomcat:
+      image: tomcat:9-jre8
+      depends_on:
+        - mysql
+        - redis
+      ports:
+        - "8888:8080"
+      environment:
+        - SPRING_PROFILES_ACTIVE=container
+        - DATABASE_HOST=mysql
+        - DATABASE_USER=root
+        - DATABASE_PASSWORD=123456
+        - DATABASE_NAME=prod_db
+        - DATABASE_PORT=3306
+      volumes:
+        - ./tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+        - ./context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml
+        - ./src/main/resources/application-prod.yml:/usr/local/tomcat/webapps/application-prod.yml
+        - ./target/monitoring-0.0.1.war:/usr/local/tomcat/webapps/monitoring.war
+    redis:
+      image: redis

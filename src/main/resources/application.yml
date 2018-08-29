@@ -1,0 +1,42 @@
+server:
+    port: 8080
+
+spring:
+    messages:
+      basename: i18n/messages
+    jpa:
+        #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        #database: SQlite
+        show-sql: true
+        generate-ddl: true
+        hibernate:
+          ddl-auto: update
+          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        properties:
+          hibernate:
+            generate_statistics: false
+            cache:
+              use_second_level_cache: true
+              use_query_cache: true
+              #region:
+              #  factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+
+    thymeleaf:
+        mode: HTML
+
+    #cache:
+    #    ehcache:
+    #      config: classpath:ehcache.xml
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    de.itcoops.monitoring: DEBUG
+
+# Redisson configuration file
+redisson-config: conf/redisson.yaml
+
+#management:
+#  security:
+#    enabled: true
+#    roles: ROLE_ADMIN
