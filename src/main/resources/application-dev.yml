@@ -23,11 +23,11 @@ spring:
 
     datasource:
         #type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/example?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        url: jdbc:mysql://localhost:3306/monitoring_dev?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
         #driverClassName: org.sqlite.JDBC
         #url: jdbc:sqlite:./test.db
         username: root
-        password: 
+        password: 123456
 
         hikari:
             data-source-properties:
