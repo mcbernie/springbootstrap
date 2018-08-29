@@ -18,3 +18,9 @@ mvn package
 docker-compose up
 ```
 
+## Build WAR file
+- start an mysql instance ( ex.: docker-mysql script)
+- run
+    ```sh
+    mvn clean package
+    ```
