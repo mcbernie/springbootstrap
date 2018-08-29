@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/bootstrap4}">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="blog-main">
+    <h1>Form</h1>
+    <form action="#" th:action="@{/form}" th:object="${personForm}" method="post" class="needs-validation" novalidate>
+
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control" th:classappend="${#fields.hasErrors('name')} ? is-invalid : is-valid" name="inputName" th:field="*{name}" id="inputName"/>
+        <div class="invalid-feedback" th:errors="*{name}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputName">Age</label>
+        <input type="text" class="form-control"  th:classappend="${#fields.hasErrors('age')} ? is-invalid : is-valid" name="inputAge" th:field="*{age}" id="inputAge"/>
+        <div class="invalid-feedback" th:errors="*{age}">
+        </div>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+    
+  </div>
+
+</div>
+</body>
+</html>

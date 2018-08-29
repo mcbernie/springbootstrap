@@ -14,7 +14,7 @@ public class AppSetting {
   @Autowired
   private SettingService settingService;
 
-  private String siteName = "SPringBlog";
+  private String siteName = "Name Einer Seite";
   private String siteSlogan = "An interesting place to discover";
   private Integer pageSize = 5;
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="webjars/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap4-theme.css">
+    <link rel="stylesheet" href="/css/bootstrap4-theme.css" th:href="@{/css/bootstrap4-theme.css}">
     <title th:text="${@AppSetting.getSiteName()+' | ' + @AppSetting.getSiteSlogan()}"></title>
 </head>
 <body>
@@ -25,6 +25,7 @@
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
+        <p th:text="${@viewHelper.getApplicationEnv()}"></p>
         <p>All rights reserved &copy; Nicolas Brüggemann, 2017-2018.</p>
         <p>Lovingly made by <a href="https://github.com/mcbernie">Template</a>, powered by Spring Boot.
         </p>

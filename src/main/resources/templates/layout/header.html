@@ -15,9 +15,9 @@
                     <a href="/" th:text="${@AppSetting.getSiteName()}"></a>
                 </h5>
                 <nav class="my-2 my-md-0 mr-md-3 topbar">
-                    <a class="p-2 " href="/">Home</a>
-                    <a class="p-2 " href="/posts/archive">Archiv</a>
-                    <a class="p-2 " href="/tags">Tags</a>
+                    <a class="p-2 " href="/">Home</a>|
+                    <a class="p-2 " href="/form">Form Beispiel</a>|
+                    <a class="p-2 " href="/tags">Tags</a>|
                     <a class="p-2 " href="/about">About</a>
                 </nav>
                 <a sec:authorize="isAuthenticated()" class="btn btn-outline-primary" href="/admin/posts">Administrator</a>

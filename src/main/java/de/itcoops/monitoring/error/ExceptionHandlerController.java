@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-//import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 
 
 @ControllerAdvice
+@Slf4j
 class ExceptionHandlerController {
 
   @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -19,8 +20,8 @@ class ExceptionHandlerController {
   public ModelAndView notFoundErrorHandler(HttpServletRequest req, NotFoundException e) throws Exception {
     String uri = req.getRequestURI();
 
-    //log.error("Request page: {} raised NotFoundException {}", uri, exception);
-    System.out.println("BFFFFFFFFFFFIJfij ------------------------------------------->");
+    log.error("Request page: {} raised NotFoundException {}", uri, e);
+
     ModelAndView model = new ModelAndView();
     model.addObject("exception", e);
     model.addObject("url", uri);
@@ -34,8 +35,8 @@ class ExceptionHandlerController {
   public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
     String uri = req.getRequestURI();
 
-    //log.error("Request page: {} raised NotFoundException {}", uri, exception);
-    System.out.println("BFFFFFFFFFFFIJfij ------------------------------------------->");
+    log.error("Request page: {} raised NotFoundException {}", uri, e);
+
     ModelAndView model = new ModelAndView();
     model.addObject("exception", e);
     model.addObject("url", uri);
