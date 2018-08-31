@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/bootstrap4}">
+      layout:decorate="~{layout/standard}">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -8,26 +8,56 @@
 <div layout:fragment="content">
   <div class="blog-main">
     <h1>Form</h1>
-    <form action="#" th:action="@{/form}" th:object="${personForm}" method="post" class="needs-validation" novalidate>
-
-      <div class="form-group">
-        <label for="inputName">Name</label>
-        <input type="text" class="form-control" th:classappend="${#fields.hasErrors('name')} ? is-invalid : is-valid" name="inputName" th:field="*{name}" id="inputName"/>
-        <div class="invalid-feedback" th:errors="*{name}">
+    <div th:fragment="info-form" xmlns:th="http://www.thymeleaf.org" th:remove="tag">
+      <form id="personForm" name="personForm" th:action="@{/api/form}" th:object="${personForm}" method="post" class="needs-validation formToSubmit" novalidate>
+        <div class="form-group">
+          <label for="inputName">Name</label>
+          <input type="text" class="form-control" th:classappend="${#fields.hasErrors('name')} ? is-invalid : is-valid" name="inputName" th:field="*{name}" id="inputName"/>
+          <div class="invalid-feedback" th:errors="*{name}">
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="inputName">Age</label>
-        <input type="text" class="form-control"  th:classappend="${#fields.hasErrors('age')} ? is-invalid : is-valid" name="inputAge" th:field="*{age}" id="inputAge"/>
-        <div class="invalid-feedback" th:errors="*{age}">
+  
+        <div class="form-group">
+          <label for="inputName">Age</label>
+          <input type="text" class="form-control"  th:classappend="${#fields.hasErrors('age')} ? is-invalid : is-valid" name="inputAge" th:field="*{age}" id="inputAge"/>
+          <div class="invalid-feedback" th:errors="*{age}">
+          </div>
         </div>
-      </div>
-
-      <button class="btn btn-primary" type="submit">Submit form</button>
-    </form>
-    
+  
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+    </div>    
   </div>
+
+</div>
+<div layout:fragment="scripts">
+  <script type="text/javascript">
+
+    (function($) {
+
+      function bindSubmit () {
+        $('#personForm').on('submit', function(e) {
+          e.preventDefault();
+          var currentForm = $('#personForm');
+          $.ajax({
+            url: currentForm.attr('action'),
+            type: 'post',
+            data: currentForm.serialize(),
+            success: function(response) {
+              if ($(response).find('.is-invalid').length) {
+                currentForm.unbind('submit');
+                currentForm.replaceWith(response);
+                bindSubmit();
+              }
+            }
+          });
+        });
+      }
+      
+      bindSubmit();
+    }(jQuery));
+ 
+  </script>
 
 </div>
 </body>

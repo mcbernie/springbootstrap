@@ -30,8 +30,8 @@ public class HomeController {
   @GetMapping(value="")
   public String index(Model model) {
 
-    log.error("Hallo Index");
-    log.info("ich bin total toll und so!");
+    log.info("--STARTING--");
+    
     /* Simple Overwrite DB Settings test */
     
     //appSetting.setSiteName("Was Geht ab du seite du...");    
